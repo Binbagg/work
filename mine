@@ -1,0 +1,52 @@
+import tkinter
+import customtkinter
+import os
+import sys
+from PIL import Image
+from pathlib import Path
+
+customtkinter.set_appearance_mode("System")  
+customtkinter.set_default_color_theme("blue")  
+
+x=1
+class Load(customtkinter.CTk):
+
+    def __init__(self):
+        super().__init__()
+        self.geometry("600x400")
+        self.eval('tk::PlaceWindow . center')
+
+
+
+if x == 1:
+    load = Load()
+    load.mainloop()
+
+location = os.path.realpath(
+    os.path.join(os.getcwd(), os.path.dirname(__file__))) #locates working directory to use images
+
+class App(customtkinter.CTk):
+     
+     def __init__(self):
+        super().__init__()
+        self.attributes('-fullscreen', True)
+
+        binbag_image = customtkinter.CTkImage(light_image=Image.open( location + "\\acrap.png"),
+                                  size=(50, 50))
+    
+        offbeat_image = customtkinter.CTkImage(light_image=Image.open( location + "\\aoffbeat.png"),
+                                       size=(50,50))
+    
+        stunart_image = customtkinter.CTkImage(light_image=Image.open( location + "\\astunart.png"),
+                                       size=(50,50))
+        
+        crap = customtkinter.CTkButton(self,text="abinbag", image=binbag_image).grid(column=1, row=1, padx= 50 , pady= 50)
+
+        offbeat = customtkinter.CTkButton(self, text="aoffbeat", image=offbeat_image).grid(column=2, row=1, padx= 50 , pady= 50)
+
+        stunart = customtkinter.CTkButton(self, text="astunart", image=stunart_image).grid(column=3, row=1, padx= 50 , pady= 50)
+
+
+if __name__ == "__main__":
+    app = App()
+    app.mainloop()
